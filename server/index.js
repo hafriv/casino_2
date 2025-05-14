@@ -6,7 +6,7 @@ const cookieParser = require('cookie-parser');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
-const JWT_SECRET = 'your-secret-key'; // In production, use environment variable
+const JWT_SECRET = 'Morozov_mihail'; 
 
 // Middleware
 app.use(cors({
@@ -16,7 +16,6 @@ app.use(cors({
 app.use(express.json());
 app.use(cookieParser());
 
-// In-memory storage (replace with database in production)
 const users = new Map();
 const leaderboard = [];
 

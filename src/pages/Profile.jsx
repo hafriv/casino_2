@@ -1,18 +1,11 @@
-import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCoins, faHistory, faTrophy } from '@fortawesome/free-solid-svg-icons';
 import { useAuth } from '../context/AuthContext';
-import PaymentModal from '../components/common/PaymentModal';
-import './Profile.css';
 
 function Profile() {
   const { user } = useAuth();
-  const [showPaymentModal, setShowPaymentModal] = useState(false);
-
-  const handlePaymentSuccess = (data) => {
-    // Здесь можно добавить обработку успешного платежа
-    console.log('Payment initiated:', data);
-  };
+  const balance = user?.balance || 0;
+  const gameHistory = user?.gameHistory || [];
 
   const formatDate = (dateString) => {
     const date = new Date(dateString);
@@ -20,10 +13,10 @@ function Profile() {
   };
 
   const calculateStats = () => {
-    const totalBets = user?.gameHistory?.length || 0;
-    const totalWins = user?.gameHistory?.filter(game => game.win > 0).length || 0;
-    const totalWinAmount = user?.gameHistory?.reduce((sum, game) => sum + game.win, 0) || 0;
-    const totalBetAmount = user?.gameHistory?.reduce((sum, game) => sum + game.bet, 0) || 0;
+    const totalBets = gameHistory.length;
+    const totalWins = gameHistory.filter(game => game.win > 0).length;
+    const totalWinAmount = gameHistory.reduce((sum, game) => sum + game.win, 0);
+    const totalBetAmount = gameHistory.reduce((sum, game) => sum + game.bet, 0);
     const winRate = totalBets > 0 ? (totalWins / totalBets * 100).toFixed(1) : 0;
 
     return {
@@ -38,42 +31,12 @@ function Profile() {
   const stats = calculateStats();
 
   return (
-    <div className="profile-container">
-      <div className="profile-card">
-        <h1 className="profile-title">Профиль</h1>
-        
-        <div className="profile-info">
-          <div className="profile-avatar">
-            {user?.username?.[0]?.toUpperCase() || 'U'}
-          </div>
-          
-          <div className="profile-details">
-            <div className="profile-username">{user?.username || 'Гость'}</div>
-            <div className="profile-balance">
-              Баланс: <span className="balance-amount">{user?.balance || 0} ₽</span>
-              <button 
-                className="deposit-button"
-                onClick={() => setShowPaymentModal(true)}
-              >
-                Пополнить
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <div className="profile-stats">
-          <div className="stat-item">
-            <span className="stat-label">Всего игр</span>
-            <span className="stat-value">{user?.totalGames || 0}</span>
-          </div>
-          <div className="stat-item">
-            <span className="stat-label">Побед</span>
-            <span className="stat-value">{user?.wins || 0}</span>
-          </div>
-          <div className="stat-item">
-            <span className="stat-label">Проигрышей</span>
-            <span className="stat-value">{user?.losses || 0}</span>
-          </div>
+    <div className="profile">
+      <div className="profile-header">
+        <h1>Профиль игрока</h1>
+        <div className="balance-display">
+          <FontAwesomeIcon icon={faCoins} className="balance-icon" />
+          <span>{balance.toLocaleString()} монет</span>
         </div>
       </div>
 
@@ -103,7 +66,7 @@ function Profile() {
           <FontAwesomeIcon icon={faHistory} />
           История игр
         </h2>
-        {user?.gameHistory?.length > 0 ? (
+        {gameHistory.length > 0 ? (
           <div className="history-table">
             <table>
               <thead>
@@ -116,7 +79,7 @@ function Profile() {
                 </tr>
               </thead>
               <tbody>
-                {user?.gameHistory?.map((game, index) => (
+                {gameHistory.map((game, index) => (
                   <tr key={index}>
                     <td>{game.game}</td>
                     <td>{game.bet}</td>
@@ -164,13 +127,6 @@ function Profile() {
           </div>
         </div>
       </div>
-
-      {showPaymentModal && (
-        <PaymentModal
-          onClose={() => setShowPaymentModal(false)}
-          onSuccess={handlePaymentSuccess}
-        />
-      )}
     </div>
   );
 }
