@@ -1,0 +1,103 @@
+.leaderboard-container {
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+  min-height: calc(100vh - 200px);
+}
+
+.leaderboard-card {
+  background: var(--secondary-bg);
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  width: 100%;
+  max-width: 800px;
+}
+
+.leaderboard-card h1 {
+  color: var(--accent-gold);
+  text-align: center;
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  text-shadow: var(--neon-glow);
+}
+
+.trophy-icon {
+  font-size: 2rem;
+}
+
+.leaderboard-table {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+th, td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid var(--primary-bg);
+}
+
+th {
+  color: var(--text-secondary);
+  font-weight: normal;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+}
+
+tr.top-1 {
+  background: linear-gradient(45deg, rgba(255, 215, 0, 0.1), transparent);
+}
+
+tr.top-2 {
+  background: linear-gradient(45deg, rgba(192, 192, 192, 0.1), transparent);
+}
+
+tr.top-3 {
+  background: linear-gradient(45deg, rgba(205, 127, 50, 0.1), transparent);
+}
+
+.medal-1 {
+  color: gold;
+}
+
+.medal-2 {
+  color: silver;
+}
+
+.medal-3 {
+  color: #cd7f32; /* Bronze */
+}
+
+.loading, .error-message, .no-data {
+  text-align: center;
+  padding: 2rem;
+  color: var(--text-secondary);
+}
+
+.error-message {
+  color: var(--accent-red);
+}
+
+@media (max-width: 768px) {
+  .leaderboard-container {
+    padding: 1rem;
+  }
+
+  .leaderboard-card {
+    padding: 1.5rem;
+  }
+
+  th, td {
+    padding: 0.8rem;
+    font-size: 0.9rem;
+  }
+} 

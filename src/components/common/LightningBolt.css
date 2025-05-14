@@ -1,0 +1,56 @@
+.lightning {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  pointer-events: none;
+  width: 120px;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: lightningFloat 2.5s ease-in-out infinite;
+}
+
+@keyframes lightningFloat {
+  0%, 100% { transform: translateY(-50%) scale(1); }
+  50% { transform: translateY(-52%) scale(1.04); }
+}
+
+.lightning-left {
+  left: 0;
+  margin-left: -100px;
+}
+
+.lightning-right {
+  right: 0;
+  margin-right: -100px;
+}
+
+.lightning-center {
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+  width: 80px;
+  height: 400px;
+  pointer-events: none;
+}
+
+.lightning svg {
+  width: 120px;
+  height: 400px;
+  display: block;
+}
+
+.lightning-bolt {
+  stroke-dasharray: 32 18 24 12 16 8;
+  stroke-dashoffset: 0;
+  animation: lightningDash 0.7s infinite linear alternate;
+  opacity: 0.97;
+}
+
+@keyframes lightningDash {
+  0% { stroke-dashoffset: 0; opacity: 1; }
+  60% { stroke-dashoffset: 32; opacity: 0.95; }
+  100% { stroke-dashoffset: 64; opacity: 1; }
+} 
