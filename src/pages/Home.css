@@ -1,0 +1,358 @@
+.home {
+  min-height: 100vh;
+}
+
+.hero {
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(26, 26, 46, 0.9) 0%, rgba(22, 33, 62, 0.9) 100%),
+              url('/assets/hero-bg.jpg') center/cover;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at center, transparent 0%, rgba(0, 0, 0, 0.7) 100%);
+  animation: pulse 4s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.7; }
+  50% { opacity: 0.9; }
+}
+
+.hero-content {
+  text-align: center;
+  z-index: 1;
+  padding: 2rem;
+  animation: fadeInUp 1s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero h1 {
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+  color: #ffd700;
+  text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+  animation: glow 2s ease-in-out infinite;
+}
+
+@keyframes glow {
+  0%, 100% { text-shadow: 0 0 20px rgba(255, 215, 0, 0.5); }
+  50% { text-shadow: 0 0 30px rgba(255, 215, 0, 0.8); }
+}
+
+.hero p {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  color: #fff;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.cta-button {
+  padding: 1rem 2rem;
+  background: linear-gradient(45deg, #ffd700, #ffa500);
+  color: #000;
+  text-decoration: none;
+  border-radius: 50px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+}
+
+.cta-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4);
+  background: linear-gradient(45deg, #ffa500, #ffd700);
+}
+
+.cta-button.large {
+  font-size: 1.2rem;
+  padding: 1.2rem 3rem;
+}
+
+.features {
+  padding: 5rem 2rem;
+  background: #1a1a2e;
+}
+
+.features h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+  color: #ffd700;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.feature-card {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 2rem;
+  border-radius: 15px;
+  text-align: center;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.feature-card:hover {
+  transform: translateY(-10px);
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.feature-card i {
+  font-size: 2.5rem;
+  color: #ffd700;
+  margin-bottom: 1rem;
+}
+
+.feature-card h3 {
+  color: #fff;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.feature-card p {
+  color: #ccc;
+  line-height: 1.6;
+}
+
+.games-preview {
+  padding: 5rem 2rem;
+  background: #16213e;
+}
+
+.games-preview h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+  color: #ffd700;
+}
+
+.games-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.game-card {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 15px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.game-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.game-svg {
+  width: 100%;
+  height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(180deg, #23253a 60%, #181a2e 100%);
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  border-radius: 15px 15px 0 0;
+  margin-bottom: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+/* Удаляем старые стили для .game-image */
+.game-image, .game-image.slots, .game-image.roulette, .game-image.dice {
+  display: none !important;
+}
+
+.game-card h3 {
+  color: #fff;
+  padding: 1.5rem 1.5rem 0.5rem;
+  font-size: 1.5rem;
+}
+
+.game-card p {
+  color: #ccc;
+  padding: 0 1.5rem 1.5rem;
+  line-height: 1.6;
+}
+
+.play-button {
+  display: inline-block;
+  margin: 0 1.5rem 1.5rem;
+  padding: 0.8rem 2rem;
+  background: linear-gradient(45deg, #ffd700, #ffa500);
+  color: #000;
+  text-decoration: none;
+  border-radius: 50px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.play-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4);
+  background: linear-gradient(45deg, #ffa500, #ffd700);
+}
+
+.cta-section {
+  padding: 5rem 2rem;
+  text-align: center;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+}
+
+.cta-section h2 {
+  font-size: 2.5rem;
+  color: #ffd700;
+  margin-bottom: 1rem;
+}
+
+.cta-section p {
+  color: #fff;
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+.svg-caption {
+  text-align: center;
+  font-size: 1.3rem;
+  color: #ffd700;
+  font-weight: bold;
+  margin-top: -10px;
+  margin-bottom: 1.2rem;
+  letter-spacing: 2px;
+  text-shadow: 0 2px 12px rgba(255,215,0,0.25), 0 0 2px #fff;
+  text-transform: uppercase;
+}
+
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+
+  .hero p {
+    font-size: 1.2rem;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+  }
+
+  .cta-button {
+    width: 100%;
+  }
+
+  .features-grid,
+  .games-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.compact-hero {
+  min-height: 40vh;
+  padding: 2.5rem 0 1.5rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.compact-hero-content {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+  background: rgba(20, 22, 40, 0.85);
+  border-radius: 24px;
+  box-shadow: 0 8px 40px 0 rgba(0,0,0,0.25);
+  text-align: center;
+}
+
+.compact-hero-content h1 {
+  font-size: 2.2rem;
+  margin-bottom: 1.2rem;
+  color: #ffd700;
+  text-shadow: 0 0 18px #ffd700, 0 0 2px #fff;
+}
+
+.compact-hero-content p {
+  font-size: 1.1rem;
+  margin-bottom: 1.2rem;
+}
+
+.quick-balance {
+  color: #ffd700;
+  font-size: 1.1rem;
+  margin-bottom: 1.2rem;
+  background: rgba(255, 215, 0, 0.08);
+  border-radius: 8px;
+  padding: 0.4rem 1rem;
+  display: inline-block;
+}
+
+.compact-hero-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  justify-content: center;
+  margin-top: 0.5rem;
+}
+
+.cta-button.small {
+  font-size: 1rem;
+  padding: 0.7rem 1.3rem;
+  border-radius: 30px;
+  margin: 0;
+}
+
+@media (max-width: 600px) {
+  .compact-hero-content {
+    padding: 1.2rem 0.5rem;
+    max-width: 98vw;
+  }
+  .compact-hero-content h1 {
+    font-size: 1.3rem;
+  }
+  .cta-button.small {
+    font-size: 0.95rem;
+    padding: 0.6rem 1rem;
+  }
+} 
