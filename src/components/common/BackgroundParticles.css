@@ -1,0 +1,34 @@
+.bg-particles {
+  position: fixed;
+  left: 0; top: 0; right: 0; bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+.bg-particle {
+  position: absolute;
+  border-radius: 50%;
+  will-change: transform, opacity;
+  animation: bgParticleMove 12s linear infinite, bgParticleFade 3.2s ease-in-out infinite alternate;
+  pointer-events: none;
+  transition: transform 0.45s cubic-bezier(.68,-0.55,.27,1.55);
+}
+.bg-particle-flash {
+  animation: bgParticleFlash 0.38s cubic-bezier(.68,-0.55,.27,1.55), bgParticleMove 12s linear infinite, bgParticleFade 3.2s ease-in-out infinite alternate !important;
+  z-index: 1;
+}
+@keyframes bgParticleMove {
+  0% { transform: translateY(0) scale(1); }
+  100% { transform: translateY(-60px) scale(1.08); }
+}
+@keyframes bgParticleFade {
+  0% { opacity: 0.7; }
+  100% { opacity: 0.18; }
+}
+@keyframes bgParticleFlash {
+  0% { filter: brightness(1.1) blur(0.5px); transform: scale(1.1); }
+  40% { filter: brightness(2.2) blur(0.5px); transform: scale(1.35); }
+  100% { filter: brightness(1.1) blur(0.5px); transform: scale(1.1); }
+} 
