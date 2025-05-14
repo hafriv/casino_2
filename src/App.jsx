@@ -50,41 +50,41 @@ function AppContent() {
       {showLoader && <LoaderScreen onFinish={() => setShowLoader(false)} />}
       {!showLoader && (
         <>
-          <Navbar user={user} onLogout={logout} />
-          <main className="main-content">
+      <Navbar user={user} onLogout={logout} />
+      <main className="main-content">
             <BackgroundParticles />
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/leaderboard" element={<Leaderboard />} />
-              <Route path="/slot-machine" element={
-                <ProtectedRoute>
-                  <SlotMachine />
-                </ProtectedRoute>
-              } />
-              <Route path="/roulette" element={
-                <ProtectedRoute>
-                  <Roulette />
-                </ProtectedRoute>
-              } />
-              <Route path="/dice" element={
-                <ProtectedRoute>
-                  <Dice />
-                </ProtectedRoute>
-              } />
-              <Route path="/profile" element={
-                <ProtectedRoute>
-                  <Profile />
-                </ProtectedRoute>
-              } />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/leaderboard" element={<Leaderboard />} />
+          <Route path="/slot-machine" element={
+            <ProtectedRoute>
+              <SlotMachine />
+            </ProtectedRoute>
+          } />
+          <Route path="/roulette" element={
+            <ProtectedRoute>
+              <Roulette />
+            </ProtectedRoute>
+          } />
+          <Route path="/dice" element={
+            <ProtectedRoute>
+              <Dice />
+            </ProtectedRoute>
+          } />
+          <Route path="/profile" element={
+            <ProtectedRoute>
+              <Profile />
+            </ProtectedRoute>
+          } />
               <Route path="/rocket" element={
                 <ProtectedRoute>
                   <RocketGame />
                 </ProtectedRoute>
               } />
-            </Routes>
-          </main>
-          <Footer />
+        </Routes>
+      </main>
+      <Footer />
           {winEffect && <WinEffectZeus onEnd={clearWinEffect} />}
         </>
       )}
